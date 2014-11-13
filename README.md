@@ -1,3 +1,1 @@
-some test app
-
-it's readme should go here
+This is the readme file. Something should be in there
