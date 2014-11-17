@@ -8,14 +8,14 @@
 					'/mytest/sw.js',
 					{scope: '/mytest/*'}
 				).then(function(){
-					document.getElementsByName("body")[0].innerHTML+='success';
+					document.getElementById("testElement").innerHTML+='success';
 				}, function(){
-					document.getElementsByName("body")[0].innerHTML+='failure';
+					document.getElementById("testElement").innerHTML+='failure';
 				});
 			}
 		</script>
 	</head>
 	<body>
-		TEST
+		<div id='testElement'>TEST</div>
 	</body>
 </html>
