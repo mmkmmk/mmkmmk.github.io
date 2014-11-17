@@ -9,10 +9,10 @@
 			if('serviceWorker' in navigator) {
 				navigator.serviceWorker.register (
 					'/mytest/sw.js',
-					{scope: '/mytest/*'}
+					{scope: '/mytest/'}
 				).then(function(){
 					document.getElementById("testElement").innerHTML+='success';
-				}, function(){
+				}.catch(function(){
 					document.getElementById("testElement").innerHTML+='failure';
 				});
 			}
