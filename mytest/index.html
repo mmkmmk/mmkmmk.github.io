@@ -6,13 +6,23 @@
 	<body>
 		<div id='testElement'>TEST</div>
 		<script>
+			if('serviceWorker' in navigator) {
+				navigator.serviceWorker.register (
+					'/mytest/sw.js',
+					{scope: '/mytest/*'}
+				).then(function(){
+					document.getElementById("testElement").innerHTML+='success';
+				}.catch(function(){
+					document.getElementById("testElement").innerHTML+='failure';
+				});
+			}
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('/mytest/sw.js', {
 					scope: '/mytest/'
 				}).then(function(sw) {
-					// registration worked!
+					document.getElementById("testElement").innerHTML+='success';
 				}).catch(function() {
-					// registration failed :(
+					document.getElementById("testElement").innerHTML+='failure';
 				});
 			}
 		</script>
