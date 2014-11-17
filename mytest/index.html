@@ -20,9 +20,9 @@
 				navigator.serviceWorker.register('/mytest/sw.js', {
 					scope: '/mytest/'
 				}).then(function(sw) {
-					document.getElementById("testElement").innerHTML+='success';
+					document.getElementById("testElement").innerHTML+='success'
 				}).catch(function() {
-					document.getElementById("testElement").innerHTML+='failure';
+					document.getElementById("testElement").innerHTML+='failure'
 				});
 			}
 		</script>
