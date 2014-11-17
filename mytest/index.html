@@ -7,11 +7,15 @@
 				navigator.serviceWorker.register (
 					'/mytest/sw.js',
 					{scope: '/mytest/*'}
-				).then(function(){console.log('success');}, function(){console.log('failure');});
+				).then(function(){
+					document.getElementById("body").innerHTML+='success';
+				}, function(){
+					document.getElementById("body").innerHTML+='success';
+				});
 			}
 		</script>
 	</head>
 	<body>
-
+		TEST
 	</body>
 </html>
