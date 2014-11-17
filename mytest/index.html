@@ -8,9 +8,9 @@
 					'/mytest/sw.js',
 					{scope: '/mytest/*'}
 				).then(function(){
-					document.getElementById("body").innerHTML+='success';
+					document.getElementsByName("body")[0].innerHTML+='success';
 				}, function(){
-					document.getElementById("body").innerHTML+='success';
+					document.getElementsByName("body")[0].innerHTML+='failure';
 				});
 			}
 		</script>
