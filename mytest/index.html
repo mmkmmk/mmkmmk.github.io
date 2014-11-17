@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head><title>title</title></head>
+	<head>
+		<title>title</title>
+		<script>
+			if('serviceWorker' in navigator) {
+				navigator.serviceWorker.register (
+					'/mytest/sw.js',
+					{scope: '/mytest/*'}
+				).then(function(){console.log('success');}, function(){console.log('failure');});
+			}
+		</script>
+	</head>
 	<body>
-		TEST
+
 	</body>
 </html>
