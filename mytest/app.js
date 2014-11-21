@@ -99,7 +99,7 @@
               console.log(file)
             };
           }
-          console.log(request.status());
+          debugger;
           request.execute(callback);
         }
       }
