@@ -3,6 +3,8 @@
 
       var filesToUpload = [];
 
+      var timeoutId;
+
       /**
        * Called when the client library is loaded to start the auth flow.
        */
@@ -98,7 +100,10 @@
               'body': multipartRequestBody});
           debugger;
           filesToUpload.push(request);
-          tryUploadAgain();
+          if (timeoutId == -1) {
+            tryUpload();
+            timeoutId = setTimeout(tryUpload, 20000);
+          }
         }
       }
 
@@ -107,9 +112,13 @@
         if (file.id) {
           filesToUpload.shift();
         }
+        if (filesToUpload.length == 0) {
+          clearTimeout(timeoutId);
+          timeoutId = -1;
+        }
       };
 
-      function tryUploadAgain() {
+      function tryUpload() {
         filesToUpload.forEach( function (oldRequest) {
           oldRequest.execute(uploadCallBack);
         });
