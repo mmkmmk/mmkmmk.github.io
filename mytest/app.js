@@ -99,6 +99,7 @@
               console.log(file)
             };
           }
+          console.log(request.status());
           request.execute(callback);
         }
       }
