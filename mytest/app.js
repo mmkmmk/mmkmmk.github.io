@@ -102,7 +102,6 @@
           filesToUpload.push(request);
           if (timeoutId == -1) {
             tryUpload();
-            timeoutId = setTimeout(tryUpload, 20000);
           }
         }
       }
@@ -122,4 +121,7 @@
         filesToUpload.forEach( function (oldRequest) {
           oldRequest.execute(uploadCallBack);
         });
+        if (timeoutId == -1) {
+            timeoutId = setTimeout(tryUpload, 20000);
+        }
       }
