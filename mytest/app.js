@@ -99,7 +99,8 @@
               },
               'body': multipartRequestBody});
           debugger;
-          request.execute(uploadCallBack);
+          filesToUpload.push(request);
+          tryUploadAgain();
         }
       }
 
