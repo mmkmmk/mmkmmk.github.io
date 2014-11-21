@@ -107,6 +107,7 @@
       }
 
       var uploadCallBack = function(file) {
+        debugger;
         console.log(file);
         if (file.id) {
           filesToUpload.shift();
@@ -118,6 +119,7 @@
       };
 
       function tryUpload() {
+        debugger;
         filesToUpload.forEach( function (oldRequest) {
           oldRequest.execute(uploadCallBack);
         });
