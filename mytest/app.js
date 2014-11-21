@@ -3,7 +3,7 @@
 
       var filesToUpload = [];
 
-      var timeoutId;
+      var timeoutId = -1;
 
       /**
        * Called when the client library is loaded to start the auth flow.
