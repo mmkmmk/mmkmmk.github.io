@@ -1,6 +1,8 @@
       var CLIENT_ID = '158867416506-jhnqjcr3eehptivh6iaobdj4abu8258g.apps.googleusercontent.com';
       var SCOPES = 'https://www.googleapis.com/auth/drive';
 
+      var filesToUpload = [];
+
       /**
        * Called when the client library is loaded to start the auth flow.
        */
@@ -96,7 +98,11 @@
               'body': multipartRequestBody});
           if (!callback) {
             callback = function(file) {
-              console.log(file)
+
+              console.log(file);
+              if (!file.id) {
+                filesToUpload.push(request);
+              }
             };
           }
           debugger;
