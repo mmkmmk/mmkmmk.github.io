@@ -3,6 +3,8 @@
 
       var filesToUpload = [];
 
+      var request;
+
       /**
        * Called when the client library is loaded to start the auth flow.
        */
@@ -88,7 +90,7 @@
               base64Data +
               close_delim;
 
-          var request = gapi.client.request({
+          request = gapi.client.request({
               'path': '/upload/drive/v2/files',
               'method': 'POST',
               'params': {'uploadType': 'multipart'},
@@ -96,16 +98,21 @@
                 'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
               },
               'body': multipartRequestBody});
-          if (!callback) {
-            callback = function(file) {
-
-              console.log(file);
-              if (!file.id) {
-                filesToUpload.push(request);
-              }
-            };
-          }
           debugger;
-          request.execute(callback);
+          request.execute(uploadCallBack);
         }
+      }
+
+      var uploadCallBack = function(file) {
+        console.log(file);
+        if (!file.id) {
+          filesToUpload.push(request);
+        }
+      };
+
+      function tryUploadAgain() {
+        filesToUpload.forEach( function (oldRequest) {
+          var request = filesToUpload.shift();
+          request.execute(uploadCallBack);
+        });
       }
